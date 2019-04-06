@@ -29,14 +29,10 @@ class Translator {
     }
 
 
-     String polish2English(String polish2EnglishDictionaryPath, String polishExpression) {
+     String polish2English(String polish2EnglishDictionaryPath, String polishExpression) throws IOException {
         String translation = "";
 
-         try {
              fileToMap(polish2EnglishDictionaryPath, polEngMap);
-         } catch (IOException e) {
-             System.out.println("Wrong input " + e.getMessage());
-         }
 
         for(String key : polEngMap.keySet()){
             if(key.equals(polishExpression)){
@@ -75,7 +71,7 @@ class Translator {
 
     void generateGermanToPolishTranslationFile(String polish2EnglishDictionaryPath, String english2GermanDictionaryPath) throws IOException{
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter("POL2GER.txt"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/POL2GER.txt"));
         StringBuilder stringBuilder = new StringBuilder();
 
         try {
