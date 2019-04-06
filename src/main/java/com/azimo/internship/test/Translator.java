@@ -9,6 +9,7 @@ class Translator {
 
     private HashMap<String, String> polEngMap = new HashMap<String, String>();
     private HashMap<String, String> engGerMap = new HashMap<String, String>();
+    private HashMap<String, String> polGerMap = new HashMap<String, String>();
 
     private void fileToMap(String dictionaryPath, HashMap hashMap) throws IOException{
         BufferedReader reader = new BufferedReader(new FileReader(dictionaryPath));
@@ -25,8 +26,8 @@ class Translator {
         reader.close();
     }
 
-     String polish2English(String polish2EnglishDictionaryPath, String polishExpression) {
 
+     String polish2English(String polish2EnglishDictionaryPath, String polishExpression) {
         String translation = "";
 
          try {
@@ -45,8 +46,8 @@ class Translator {
         return translation;
     }
 
-    String polishToGerman(String polish2EnglishDictionaryPath, String english2GermanDictionaryPath, String polishExpression){
 
+    String polishToGerman(String polish2EnglishDictionaryPath, String english2GermanDictionaryPath, String polishExpression){
         String engTranslation = "";
         String translation = "";
 
@@ -71,6 +72,28 @@ class Translator {
         if(translation.isEmpty()) System.out.println("No such word in resources file.");
 
         return translation;
+
+    }
+
+
+    void generateGermanToPolishTranslationFile(String polish2EnglishDictionaryPath, String english2GermanDictionaryPath){
+        try {
+            fileToMap(polish2EnglishDictionaryPath, polEngMap);
+            fileToMap(english2GermanDictionaryPath, engGerMap);
+        } catch (IOException e) {
+            System.out.println("Wrong input " + e.getMessage());
+        }
+
+        for(String i : polEngMap.keySet()){
+            for(String j : engGerMap.keySet()){
+                if(polEngMap.get(i).equals(j)){
+                    polGerMap.put(i, engGerMap.get(j));
+                }
+            }
+        }
+        for(String key : polGerMap.keySet()){
+            System.out.println(key + ":" + polGerMap.get(key));
+        }
 
     }
 }
