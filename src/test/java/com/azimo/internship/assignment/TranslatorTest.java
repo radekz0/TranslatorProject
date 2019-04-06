@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
 
 import static org.junit.Assert.*;
 
@@ -130,7 +129,7 @@ public class TranslatorTest {
     }
 
     @org.junit.Test
-    public void generateGermanToPolishTranslationFileValidDataCheck() throws IOException {
+    public void generateGermanToPolishTranslationFileDataCheck() throws IOException {
         Translator translator = new Translator();
         translator.generateGermanToPolishTranslationFile("src/test/resources/POL2ENG.txt", "src/test/resources/ENG2GER.txt");
 
@@ -149,7 +148,5 @@ public class TranslatorTest {
         Collections.sort(readData);
 
         assertTrue(validData.equals(readData));
-
     }
-
 }
