@@ -48,7 +48,7 @@ class Translator {
 
 
     String polishToGerman(String polish2EnglishDictionaryPath, String english2GermanDictionaryPath, String polishExpression){
-        String engTranslation = "";
+        //String engTranslation = "";
         String translation = "";
 
         try {
@@ -58,15 +58,10 @@ class Translator {
             System.out.println("Wrong input " + e.getMessage());
         }
 
-        for(String key : polEngMap.keySet()){
-            if(key.equals(polishExpression)){
-                engTranslation = polEngMap.get(key);
-            }
-        }
-
-        for(String key : engGerMap.keySet()){
-            if(key.equals(engTranslation)){
-                translation = engGerMap.get(key);
+        for(String i : polEngMap.keySet()){
+            for(String j : engGerMap.keySet()){
+                if(polEngMap.get(i).equals(j) && i.equals(polishExpression))
+                    translation = engGerMap.get(j);
             }
         }
         if(translation.isEmpty()) System.out.println("No such word in resources file.");
