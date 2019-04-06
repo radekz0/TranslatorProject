@@ -1,4 +1,4 @@
-package com.azimo.internship.test;
+package com.azimo.internship.assignment;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
