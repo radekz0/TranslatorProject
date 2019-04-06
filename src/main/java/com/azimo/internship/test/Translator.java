@@ -5,16 +5,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class Translator {
+class Translator {
 
     private HashMap<String, String> polEngMap = new HashMap<String, String>();
 
-
-    public String polish2English(String polish2EnglishDictionaryPath, String polishExpression) throws IOException {
-
+    private void fileToMap(String polish2EnglishDictionaryPath) throws IOException{
         BufferedReader reader = new BufferedReader(new FileReader(polish2EnglishDictionaryPath));
         String fileLine;
-        String translation = "";
 
         while ((fileLine = reader.readLine()) != null) {
             String[] splitLine = fileLine.split(";", 2);
@@ -25,6 +22,17 @@ public class Translator {
             }
         }
         reader.close();
+    }
+
+
+     String polish2English(String polish2EnglishDictionaryPath, String polishExpression) {
+        try {
+            fileToMap(polish2EnglishDictionaryPath);
+        } catch (IOException e) {
+            System.out.println("Wrong input " + e.getMessage());
+        }
+
+        String translation = "";
 
         for(String key : polEngMap.keySet()){
             if(key.equals(polishExpression)){
