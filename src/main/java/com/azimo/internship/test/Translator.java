@@ -1,7 +1,9 @@
 package com.azimo.internship.test;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -71,7 +73,11 @@ class Translator {
     }
 
 
-    void generateGermanToPolishTranslationFile(String polish2EnglishDictionaryPath, String english2GermanDictionaryPath){
+    void generateGermanToPolishTranslationFile(String polish2EnglishDictionaryPath, String english2GermanDictionaryPath) throws IOException{
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter("POL2GER.txt"));
+        StringBuilder stringBuilder = new StringBuilder();
+
         try {
             fileToMap(polish2EnglishDictionaryPath, polEngMap);
             fileToMap(english2GermanDictionaryPath, engGerMap);
@@ -86,9 +92,12 @@ class Translator {
                 }
             }
         }
+
         for(String key : polGerMap.keySet()){
-            System.out.println(key + ":" + polGerMap.get(key));
+            stringBuilder.append(key + ";" + polGerMap.get(key) + "\n");
         }
 
+        writer.append(stringBuilder);
+        writer.close();
     }
 }
