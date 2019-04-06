@@ -32,7 +32,7 @@ class Translator {
      String polish2English(String polish2EnglishDictionaryPath, String polishExpression) throws IOException {
         String translation = "";
 
-             fileToMap(polish2EnglishDictionaryPath, polEngMap);
+        fileToMap(polish2EnglishDictionaryPath, polEngMap);
 
         for(String key : polEngMap.keySet()){
             if(key.equals(polishExpression)){
@@ -45,16 +45,13 @@ class Translator {
     }
 
 
-    String polishToGerman(String polish2EnglishDictionaryPath, String english2GermanDictionaryPath, String polishExpression){
+    String polishToGerman(String polish2EnglishDictionaryPath, String english2GermanDictionaryPath, String polishExpression) throws IOException{
         //String engTranslation = "";
         String translation = "";
 
-        try {
-            fileToMap(polish2EnglishDictionaryPath, polEngMap);
-            fileToMap(english2GermanDictionaryPath, engGerMap);
-        } catch (IOException e) {
-            System.out.println("Wrong input " + e.getMessage());
-        }
+        fileToMap(polish2EnglishDictionaryPath, polEngMap);
+        fileToMap(english2GermanDictionaryPath, engGerMap);
+
 
         for(String i : polEngMap.keySet()){
             for(String j : engGerMap.keySet()){
@@ -74,12 +71,8 @@ class Translator {
         BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/POL2GER.txt"));
         StringBuilder stringBuilder = new StringBuilder();
 
-        try {
-            fileToMap(polish2EnglishDictionaryPath, polEngMap);
-            fileToMap(english2GermanDictionaryPath, engGerMap);
-        } catch (IOException e) {
-            System.out.println("Wrong input " + e.getMessage());
-        }
+        fileToMap(polish2EnglishDictionaryPath, polEngMap);
+        fileToMap(english2GermanDictionaryPath, engGerMap);
 
         for(String i : polEngMap.keySet()){
             for(String j : engGerMap.keySet()){
