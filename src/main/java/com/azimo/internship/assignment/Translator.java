@@ -10,9 +10,9 @@ import java.util.HashMap;
 
 class Translator {
 
-    private HashMap<String, String> polEngMap = new HashMap<String, String>();
-    private HashMap<String, String> engGerMap = new HashMap<String, String>();
-    private HashMap<String, String> polGerMap = new HashMap<String, String>();
+    private HashMap<String, String> polEngMap = new HashMap<>();
+    private HashMap<String, String> engGerMap = new HashMap<>();
+    private HashMap<String, String> polGerMap = new HashMap<>();
 
     //Method to convert data from resource files to hashMaps.
     private void fileToMap(String dictionaryPath, HashMap hashMap) throws IOException{
