@@ -134,7 +134,7 @@ public class TranslatorTest {
         translator.generateGermanToPolishTranslationFile("src/test/resources/POL2ENG.txt", "src/test/resources/ENG2GER.txt");
 
         BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/POL2GER.txt"));
-        ArrayList<String> readData = new ArrayList<String>();
+        ArrayList<String> readData = new ArrayList<>();
         String[] validArray = {"szafka;schrank", "jablko;apfel", "zielony;grun","drzwi;tur","las deszczowy;regenwald","trzy;drei","dokument;dokumentieren","sol;salz","kawa;kaffee","zupa;suppe","dywan;teppich","lampa;lampe","herbata;tee","lekarz;arzt","tabletka;tablette","kanapka;sandwich","gabinet;buro","woda;wasser","cytryna;zitrone","czerwony;rot","butelka;flasche","fioletowy;violett","zaslona;vorhang","dwa;zwei","paszport;reisepass","jeden;ein","pieprz;pfeffer","olowek;bleistift","kolor;farbe","rower;fahrrad"};
         ArrayList<String> validData = new ArrayList<>(Arrays.asList(validArray));
         String fileLine;
