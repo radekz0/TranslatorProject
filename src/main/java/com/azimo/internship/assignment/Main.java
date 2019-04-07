@@ -7,6 +7,6 @@ public class Main {
 //        Translator translator = new Translator();
 //        System.out.println(translator.polish2English("src/main/resources/POL2ENG.txt", "rower"));
 //        System.out.println(translator.polishToGerman("src/main/resources/POL2ENG.txt","src/main/resources/ENG2GER.txt","dwa"));
-//        translator.generateGermanToPolishTranslationFile("src/main/resources/POL2ENG.txt", "src/main/resources/ENG2GER.txt");
+//        System.out.println(translator.generateGermanToPolishTranslationFile("src/main/resources/POL2ENG.txt", "src/main/resources/ENG2GER.txt"));
     }
 }

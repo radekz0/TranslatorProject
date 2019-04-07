@@ -70,9 +70,9 @@ class Translator {
 
 
     //This method creates a file POL2GER.txt in resources folder by combining POL2ENG.txt and ENG2GER.txt files.
-    void generateGermanToPolishTranslationFile(String polish2EnglishDictionaryPath, String english2GermanDictionaryPath) throws IOException{
-
-        BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/POL2GER.txt"));
+    String generateGermanToPolishTranslationFile(String polish2EnglishDictionaryPath, String english2GermanDictionaryPath) throws IOException{
+        String path = "src/main/resources/POL2GER.txt";
+        BufferedWriter writer = new BufferedWriter(new FileWriter(path));
         StringBuilder stringBuilder = new StringBuilder();
 
         fileToMap(polish2EnglishDictionaryPath, polEngMap);
@@ -94,5 +94,7 @@ class Translator {
 
         writer.append(stringBuilder);
         writer.close();
+
+        return path;
     }
 }

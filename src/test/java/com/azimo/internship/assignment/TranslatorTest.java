@@ -41,16 +41,22 @@ public class TranslatorTest {
     @org.junit.Test
     public void polish2EnglishNullInput() throws IOException{
         Translator translator = new Translator();
-        String actual1 = translator.polish2English("src/test/resources/POL2ENG.txt",null);
+        String actual = translator.polish2English("src/test/resources/POL2ENG.txt",null);
         String expected = "";
 
-        assertEquals(actual1,expected);
+        assertEquals(actual,expected);
     }
 
     @org.junit.Test(expected = IOException.class)
     public void polish2EnglishWrongPath() throws IOException{
         Translator translator  = new Translator();
         translator.polish2English("ffffff","rower");
+    }
+
+    @org.junit.Test(expected = NullPointerException.class)
+    public void polish2ENglishNullPath() throws IOException{
+        Translator translator  = new Translator();
+        translator.polish2English(null,"rower");
     }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -84,16 +90,10 @@ public class TranslatorTest {
     @org.junit.Test
     public void polish2GermanNullInput() throws IOException{
         Translator translator = new Translator();
-        String actual1 = translator.polishToGerman("src/test/resources/POL2ENG.txt","src/test/resources/ENG2GER.txt",null);
+        String actual = translator.polishToGerman("src/test/resources/POL2ENG.txt","src/test/resources/ENG2GER.txt",null);
         String expected = "";
 
-        assertEquals(actual1,expected);
-    }
-
-    @org.junit.Test(expected = IOException.class)
-    public void polish2GermanWrongSecondPath() throws IOException{
-        Translator translator  = new Translator();
-        translator.polishToGerman("src/test/resources/POL2ENG.txt","fffffff","rower");
+        assertEquals(actual,expected);
     }
 
     @org.junit.Test(expected = IOException.class)
@@ -103,9 +103,33 @@ public class TranslatorTest {
     }
 
     @org.junit.Test(expected = IOException.class)
+    public void polish2GermanWrongSecondPath() throws IOException{
+        Translator translator  = new Translator();
+        translator.polishToGerman("src/test/resources/POL2ENG.txt","fffffff","rower");
+    }
+
+    @org.junit.Test(expected = IOException.class)
     public void polish2GermanWrongPaths() throws IOException{
         Translator translator  = new Translator();
         translator.polishToGerman("abcdef","fffffff","rower");
+    }
+
+    @org.junit.Test(expected = NullPointerException.class)
+    public void polish2GermanNullFirstPath() throws IOException{
+        Translator translator  = new Translator();
+        translator.polishToGerman(null,"src/test/resources/ENG2GER.txt","rower");
+    }
+
+    @org.junit.Test(expected = NullPointerException.class)
+    public void polish2GermanNullSecondPath() throws IOException{
+        Translator translator  = new Translator();
+        translator.polishToGerman("src/test/resources/POL2ENG.txt",null,"rower");
+    }
+
+    @org.junit.Test(expected = NullPointerException.class)
+    public void polish2GermanNullPaths() throws IOException{
+        Translator translator  = new Translator();
+        translator.polishToGerman(null,null,"rower");
     }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -126,6 +150,33 @@ public class TranslatorTest {
     public void generateGermanToPolishTranslationFileWrongPaths() throws IOException {
         Translator translator = new Translator();
         translator.generateGermanToPolishTranslationFile("oooooo", "rrrrrrrr");
+    }
+
+    @org.junit.Test(expected = NullPointerException.class)
+    public void generateGermanToPolishTranslationFileFirstNullPath() throws IOException {
+        Translator translator = new Translator();
+        translator.generateGermanToPolishTranslationFile(null, "src/test/resources/ENG2GER.txt");
+    }
+
+    @org.junit.Test(expected = NullPointerException.class)
+    public void generateGermanToPolishTranslationSecondNullPath() throws IOException {
+        Translator translator = new Translator();
+        translator.generateGermanToPolishTranslationFile("src/test/resources/POL2ENG.txt", null);
+    }
+
+    @org.junit.Test(expected = NullPointerException.class)
+    public void generateGermanToPolishTranslationFileNullPaths() throws IOException {
+        Translator translator = new Translator();
+        translator.generateGermanToPolishTranslationFile(null, null);
+    }
+
+    @org.junit.Test
+    public void generateGermanToPolishTranslationFileReturnCheck() throws IOException{
+        Translator translator = new Translator();
+        String actual = translator.generateGermanToPolishTranslationFile("src/test/resources/POL2ENG.txt", "src/test/resources/ENG2GER.txt");
+        String expected = "src/main/resources/POL2GER.txt";
+
+        assertEquals(actual,expected);
     }
 
     @org.junit.Test
